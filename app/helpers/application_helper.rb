@@ -54,4 +54,20 @@ module ApplicationHelper
     def devise_mapping
         @devise_mapping ||= Devise.mappings[:user]
     end
+
+
+    #Flash Messages
+    def render_turbo_stream_flash_messages
+    turbo_stream.prepend "flash", partial: "shared/flash/user_flash"
+    end
+
+
+    #Form error notification 
+    def form_error_notification(object)
+        if object.errors.any?
+            tag.div class: "error-message msg-alert" do
+                object.errors.full_messages.to_sentence.capitalize
+            end
+        end
+    end
 end

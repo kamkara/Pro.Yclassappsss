@@ -6,8 +6,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   scope :ordered, -> { order(id: :desc) }
 
-  #refactory order items
-  scope :student, -> { where("status = ?", "Student").order("created_at desc")}
-  scope :daily_sign_up, -> { where("created_at >= ?", Time.zone.now.beginning_of_day)}
+  
 
 end
